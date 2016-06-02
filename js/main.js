@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    console.log(moment);
     $('.honeycombs').honeycombs({
         combWidth: 220,
         margin: 10
