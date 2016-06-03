@@ -2,17 +2,9 @@ doctype html
 html(lang='pt-br')
   head
     include _partials/meta.jade
-
-    link(rel='stylesheet' href='/dest/components.min.css')
-    link(rel='stylesheet' href='/css/style.css')
-    link(rel='stylesheet' href='/css/homeycombs.css')
-
-    link(rel="icon" href="/img/favicons/ico.ico")
-    script(src='/dest/components.min.js')
-    script(src='/js/jquery.homeycombs.js')
-    script(src='/js/main.js')
-
     title 4Cavaleiros
+    link(rel="stylesheet" type="text/css" href="style.css")
+    script(data-cfasync="false" src="static/bundle.js")
   body
     include _partials/menu.jade
     include _partials/home.jade

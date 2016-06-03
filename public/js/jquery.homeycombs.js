@@ -1,3 +1,5 @@
+import jQuery from 'jquery'
+
 (function($) {
 
     $.fn.honeycombs = function(options) {
@@ -57,7 +59,7 @@
             function updateScales(){
                 combWidth = settings.combWidth;
                 combHeight = ( Math.sqrt(3) * combWidth ) / 2;
-                edgeWidth = combWidth / 2;
+                // edgeWidth = combWidth / 2;
                 
                 
                 $(element).find('.comb').width(combWidth).height(combHeight);
@@ -73,7 +75,7 @@
                 updateScales();
                 width = $(element).width();
                 
-                newWidth = ( num / 1.5) * settings.combWidth;
+                var newWidth = ( num / 1.5) * settings.combWidth;
                 
                 if(newWidth < width){
                     width = newWidth;
