@@ -1,10 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Container as MuiContainer } from '@material-ui/core'
-
 import DemoVideoMP4 from '../../assets/video/demo.mp4'
 import DemoVideoWebm from '../../assets/video/demo.webm'
+import { graphql, useStaticQuery } from 'gatsby'
 
 const Container = styled.div``
 
@@ -16,9 +15,20 @@ const Video = styled.video`
 type Props = {}
 
 function Demo(props: Props) {
+  const data = useStaticQuery(graphql`
+    query {
+      fallback: file(relativePath: { eq: "fallback.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 800) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
   return (
     <Container>
-      <Video autoPlay loop controls={false} muted>
+      <Video autoPlay loop controls={false} muted poster={data.fallback.childImageSharp.fluid.src}>
         <source src={DemoVideoMP4} type='video/mp4' />
         <source src={DemoVideoWebm} type='video/webm' />
       </Video>
