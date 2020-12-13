@@ -53,7 +53,6 @@ function Language(props: Props) {
   }
 
   const { lang } = props
-  console.log(lang)
 
   return (
     <Container>

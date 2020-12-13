@@ -1,11 +1,9 @@
 import * as React from 'react'
-import styled, { createGlobalStyle } from 'styled-components'
+import styled  from 'styled-components'
 import { IntlProvider } from 'react-intl'
 
 import { Paper as MuiPaper, Container as MuiContainer, Theme, CssBaseline } from '@material-ui/core'
 import { LangKeys } from '../../pages'
-
-import GlobalFonts from '../../assets/fonts/fonts'
 
 import locales from '../../utils/locales'
 import CrossImage from './CrossImage'
@@ -21,13 +19,6 @@ const Paper = styled(MuiPaper)`
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 `
-
-// const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
-//   ::selection {
-//     color: white;
-//     background-color: ${props => props.theme.palette.primary.main};
-//   } 
-// `
 
 type Props = {
   lang: LangKeys

@@ -5,12 +5,13 @@ import { graphql, useStaticQuery } from 'gatsby'
 import Img, { GatsbyImageProps } from 'gatsby-image'
 
 const Image = styled(Img)`
-  position: absolute !important;
+  position: absolute!important;
   pointer-events: none;
-  border-bottom-right-radius: ${props => props.theme.shape.borderRadius}px;
-  bottom: 0;
   right: 0;
+  bottom: 0;
   z-index: 0;
+  border-bottom-left-radius: ${props => props.theme.shape.borderRadius}px;
+  border-bottom-right-radius: ${props => props.theme.shape.borderRadius}px;
 ` as React.ComponentType<GatsbyImageProps>
 
 type Props = {}

@@ -3,13 +3,9 @@ import styled from 'styled-components'
 
 import { Theme, Button } from '@material-ui/core'
 
-type Props = {
-  visibleDown?: boolean
-}
-
-const Container = styled.div<Props>`
-  ${(props: Props & { theme: Theme }) => `
-    display: ${props.visibleDown ? 'none' : 'flex'};
+const Container = styled.div`
+  ${(props: { theme: Theme }) => `
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -18,14 +14,11 @@ const Container = styled.div<Props>`
     button, a {
       margin-right: ${props.theme.spacing(2)}px;
     }
-    ${props.theme.breakpoints.down('sm')} {
-      display: ${props.visibleDown ? 'flex' : 'none'};
-      button, a {
-        margin-top: ${props.theme.spacing(2)}px;
-      }
-    }
     ${props.theme.breakpoints.down('xs')} {
       flex-direction: column;
+      button, a {
+        margin-bottom: ${props.theme.spacing(2)}px;
+      }
     }
   `}
 `
@@ -33,9 +26,9 @@ const Container = styled.div<Props>`
 const macOS = 'https://drive.google.com/file/d/0B04ULKwaZK7ZWnJ1NnV3dHBXUVU/view?usp=sharing'
 const windows = 'https://drive.google.com/file/d/0B04ULKwaZK7ZYS1GdS05N1lLcUU/view?usp=sharing'
 
-function Download(props: Props) {
+function Download() {
   return (
-    <Container visibleDown={props.visibleDown}>
+    <Container>
       <Button variant='contained' color='primary' href={macOS} target='_BLANK'>
         Download macOS
         <svg

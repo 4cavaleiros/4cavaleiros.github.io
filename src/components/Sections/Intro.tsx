@@ -27,6 +27,14 @@ const Hover = styled.div`
   padding-top: ${props => props.theme.spacing(6)}px;
 `
 
+const BottomMobile = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+`
+
 type Props = {
   lang: LangKeys
   children: React.ReactNode
@@ -43,6 +51,9 @@ function HideOnScroll(props: { children: React.ReactElement }) {
 }
 
 function Intro(props: Props) {
+  const isXs = useScreen('xs')
+  const isSm = useScreen('sm')
+  const isMd = useScreen('md')
   const [menu, setMenu] = useState<MenuKey>('intro')
 
   function handleChangeMenu(value: MenuKey) {
@@ -55,13 +66,18 @@ function Intro(props: Props) {
     <>
       <Container id='intro'>
         <Header lang={props.lang} />
-        <Hover>{props.children}</Hover>
+        {!isMd && <Hover>{props.children}</Hover>}
+        {!isMd && <Menu {...menuProps} />}
         <Demo />
-        <Menu {...menuProps} />
         <HideOnScroll>
           <Menu {...menuProps} position='fixed' />
         </HideOnScroll>
       </Container>
+        {isMd && (
+          <BottomMobile>
+            {props.children}
+          </BottomMobile>
+        )}
     </>
   )
 }

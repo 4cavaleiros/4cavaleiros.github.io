@@ -7,6 +7,8 @@ import { AppBar, Tab as MuiTab, Tabs as MuiTabs } from '@material-ui/core'
 import { graphql, useStaticQuery } from 'gatsby'
 import { FormattedMessage } from 'react-intl'
 
+import useScreen from '../../hooks/useScreen'
+
 const Container = styled(AppBar)`
   background-color: rgba(0, 0, 0, 0.55);
   box-shadow: none;
@@ -23,6 +25,9 @@ const Icon = styled(Img)`
   max-width: 40px;
   max-height: 40px;
   margin-right: 8px;
+  ${props => props.theme.breakpoints.down('xs')} {
+    top: 10px;
+  }
 ` as React.ComponentType<GatsbyImageProps>
 
 const Tabs = styled(MuiTabs)`
@@ -40,6 +45,11 @@ const Tab = styled(MuiTab)`
   .MuiTab-wrapper {
     display: flex;
     flex-direction: row;
+    white-space: nowrap;
+    ${props => props.theme.breakpoints.down('xs')} {
+      font-size: 90%;
+      flex-direction: column;
+    }
   }
 `
 
@@ -52,6 +62,7 @@ type Props = {
 }
 
 function Menu(props: Props, ref) {
+  const isMobile = useScreen('sm')
   const data = useStaticQuery(graphql`
     query {
       death: file(relativePath: { eq: "persons/head/death.png" }) {
@@ -95,7 +106,7 @@ function Menu(props: Props, ref) {
 
   return (
     <Wrapper position={position} ref={ref}>
-      <Tabs centered value={props.menu} onChange={handleChange}>
+      <Tabs variant={isMobile ? "fullWidth" : "standard"} centered value={props.menu} onChange={handleChange}>
         <Tab
           value='intro'
           label={<FormattedMessage id='menu.home' defaultMessage='Home' />}

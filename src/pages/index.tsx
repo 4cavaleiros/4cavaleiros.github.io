@@ -30,9 +30,8 @@ function IndexPage(props: Props) {
       <SEO lang={lang} />
       <Intro lang={lang}>
         <Logo />
-        <Download visibleDown={false} />
+        <Download />
       </Intro>
-      <Download visibleDown />
       <About />
       <Document />
       <Team />

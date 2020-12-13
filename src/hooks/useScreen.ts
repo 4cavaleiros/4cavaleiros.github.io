@@ -17,7 +17,7 @@ export default function UseScreen(breakpoint: Breakpoints) {
       if (newMatch !== match) {
         setMatch(newMatch)
       }
-    }, 500)
+    }, 400)
 
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
