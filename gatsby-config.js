@@ -16,8 +16,6 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-styled-components`,
-    `gatsby-plugin-material-ui`,
     {
       resolve: `gatsby-plugin-i18n`,
       options: {
@@ -51,5 +49,8 @@ module.exports = {
       }
     },
     `gatsby-plugin-offline`,
+    `gatsby-plugin-layout`,
+    `gatsby-plugin-material-ui`,
+    `gatsby-plugin-styled-components`,
   ],
 }
