@@ -9,7 +9,7 @@ function Image() {
       placeholderImage: file(relativePath: { eq: "logo.png" }) {
         childImageSharp {
           fixed(width: 400) {
-            ...GatsbyImageSharpFixed
+            ...GatsbyImageSharpFixed_noBase64
           }
         }
       }
@@ -20,7 +20,10 @@ function Image() {
     return <div>Picture not found</div>
   }
 
-  return <Img fixed={data.placeholderImage.childImageSharp.fixed} />
+  console.log(data)
+
+  // return <img src={data.placeholderImage.childImageSharp.fixed.base64} />
+  return <Img  fixed={data.placeholderImage.childImageSharp.fixed} />
 }
 
 export default Image

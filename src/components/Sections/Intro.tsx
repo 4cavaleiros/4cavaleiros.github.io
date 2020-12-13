@@ -36,7 +36,7 @@ function HideOnScroll(props: { children: React.ReactElement }) {
   const isMobile = useScreen('md')
   const trigger = useScrollTrigger({ disableHysteresis: false, threshold: isMobile ? 420 : 820 })
   return (
-    <Slide appear={false} direction='down' in={trigger}>
+    <Slide appear={false} unmountOnExit direction='down' in={trigger}>
       {props.children}
     </Slide>
   )

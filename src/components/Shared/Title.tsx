@@ -22,7 +22,7 @@ const Title = styled<TitleProps>(({ center, clockwise, ...rest }) => (
   </Container>
 ))`
   position: relative;
-  font-family: 'PatrickHand';
+  font-family: 'Patrick Hand', 'Comic Sans MS';
   display: inline-block;
   margin-bottom: ${props => props.theme.spacing(4)}px;
   text-align: ${props => (props.center ? 'center' : 'left')};

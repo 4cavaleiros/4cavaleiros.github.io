@@ -2,7 +2,7 @@ import * as React from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 import { IntlProvider } from 'react-intl'
 
-import { Paper as MuiPaper, Container as MuiContainer, Theme } from '@material-ui/core'
+import { Paper as MuiPaper, Container as MuiContainer, Theme, CssBaseline } from '@material-ui/core'
 import { LangKeys } from '../../pages'
 
 import GlobalFonts from '../../assets/fonts/fonts'
@@ -22,12 +22,12 @@ const Paper = styled(MuiPaper)`
   border-top-right-radius: 0px;
 `
 
-const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
-  ::selection {
-    color: white;
-    background-color: ${props => props.theme.palette.primary.main};
-  } 
-`
+// const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
+//   ::selection {
+//     color: white;
+//     background-color: ${props => props.theme.palette.primary.main};
+//   } 
+// `
 
 type Props = {
   lang: LangKeys
@@ -38,8 +38,6 @@ function Layout(props: Props) {
   const { lang } = props
   return (
     <IntlProvider key={lang} locale={lang} messages={locales[lang]}>
-      <GlobalFonts />
-      <GlobalStyles />
       <Container>
         <Paper elevation={14}>
           {props.children}

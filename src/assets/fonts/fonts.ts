@@ -22,9 +22,9 @@ export default createGlobalStyle`
         font-style: normal;
     }
     @font-face {
-        font-family: 'PatrickHand';
+        font-family: 'Patrick Hand';
         src:
-            local('PatrickHand'),
+            local('Patrick Hand'),
             url(${PatrickHand}) format('truetype'),
             url(${PatrickHandWebfont}) format('woff'),
             url(${PatrickHandWebfont2}) format('woff2');
@@ -40,7 +40,7 @@ export default createGlobalStyle`
     @font-face {
         font-family: 'Nunito';
         src:
-            url(${NunitoRegular}) format('truetypettf'),
+            url(${NunitoRegular}) format('truetype'),
             url(${NunitoRegularWebfont}) format('woff'),
             url(${NunitoRegularWebfont2}) format('woff2');
         font-weight: 400;
