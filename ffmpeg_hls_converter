@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -e
+
+# SOURCE=${1:-src/assets/video/demo.mp4}
+
+[[ -z $1 ]] && SOURCE=src/assets/video/demo.webm
+
+echo $SOURCE
+
+ffmpeg \
+-i $SOURCE \
+-i $SOURCE \
+-i $SOURCE \
+-i $SOURCE \
+-vf scale=w=960:h=540:force_original_aspect_ratio=decrease \
+-c:v h264 -profile:v main \
+-crf 20 \
+-g 48 -keyint_min 48 \
+-sc_threshold 0 \
+-b:v 2500k -maxrate 2675k -bufsize 4750k \
+-hls_time 4 \
+-hls_playlist_type vod \
+-hls_segment_filename static/video/stream/video%03d.ts \
+static/video/stream/video.m3u8

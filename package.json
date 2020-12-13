@@ -44,6 +44,7 @@
     "gatsby-source-filesystem": "^2.5.0",
     "gatsby-transformer-sharp": "^2.6.0",
     "gh-pages": "2.2.0",
+    "hls.js": "^0.14.17",
     "lodash.throttle": "^4.1.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",

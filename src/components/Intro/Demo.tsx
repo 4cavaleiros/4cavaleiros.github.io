@@ -1,20 +1,33 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
-import DemoVideoMP4 from '../../assets/video/demo.mp4'
-import DemoVideoWebm from '../../assets/video/demo.webm'
 import { graphql, useStaticQuery } from 'gatsby'
 
-const Container = styled.div``
+import HLS from 'hls.js'
+
+const dataStream = '/video/stream/video.m3u8'
 
 const Video = styled.video`
   width: 100%;
   height: 100%;
 `
 
-type Props = {}
+function Demo() {
+  const ref = useRef<HTMLVideoElement | null>(null)
 
-function Demo(props: Props) {
+  useEffect(() => {
+    const videoRef = ref.current
+    if (videoRef) {
+      if (videoRef.canPlayType('application/vnd.apple.mpegurl')) {
+        videoRef.src = dataStream
+      } else if (HLS.isSupported()) {
+        const hls = new HLS()
+        hls.loadSource(dataStream)
+        hls.attachMedia(videoRef)
+      }
+    }
+  }, [])
+
   const data = useStaticQuery(graphql`
     query {
       fallback: file(relativePath: { eq: "fallback.jpg" }) {
@@ -26,13 +39,9 @@ function Demo(props: Props) {
       }
     }
   `)
+
   return (
-    <Container>
-      <Video autoPlay loop controls={false} muted poster={data.fallback.childImageSharp.fluid.src}>
-        <source src={DemoVideoMP4} type='video/mp4' />
-        <source src={DemoVideoWebm} type='video/webm' />
-      </Video>
-    </Container>
+    <Video ref={ref} autoPlay loop controls={false} muted poster={data.fallback.childImageSharp.fluid.src} /> 
   )
 }
 
